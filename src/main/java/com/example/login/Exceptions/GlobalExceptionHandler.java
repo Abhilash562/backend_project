@@ -38,4 +38,9 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiResponse<Object>> handleUserNotFound(UserNotFoundException ex) {
         return new ResponseEntity<>(new ApiResponse<>(false, ex.getMessage(), null), HttpStatus.NOT_FOUND);
     }
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiResponse<Object>> handleResourceNotFound(ResourceNotFoundException ex) {
+        return new ResponseEntity<>(new ApiResponse<>(false, ex.getMessage(), null), HttpStatus.NOT_FOUND);
+    }
 }

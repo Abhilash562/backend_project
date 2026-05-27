@@ -23,7 +23,7 @@ public class SecurityConfig{
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/register", "/login","/sendOTP","/verifyOTP").permitAll()
+                .requestMatchers("/register", "/login","/sendOTP","/verifyOTP", "/product/**").permitAll()
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

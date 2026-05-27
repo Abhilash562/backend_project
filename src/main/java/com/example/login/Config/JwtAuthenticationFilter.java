@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     	String path = request.getRequestURI();
 
         // Skip public endpoints
-        if (path.startsWith("/login") || path.startsWith("/register")) {
+        if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/sendOTP") || path.startsWith("/verifyOTP")) {
             filterChain.doFilter(request, response);
             return;
         }

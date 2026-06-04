@@ -27,4 +27,6 @@ public class ProductRequestDto {
     private String status;
 
     private String imageUrl;
+    
+    private String supplierName;
 }

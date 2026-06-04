@@ -41,9 +41,16 @@ public class Users {
     private String businessType;
 
     private LocalDateTime createdAt = LocalDateTime.now();
+    
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
 
     public enum Role {
         ADMIN, SUPPLIER, VENDOR
+    }
+    
+    public enum Status {
+        ACTIVE, INACTIVE
     }
 
 }

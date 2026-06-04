@@ -1,6 +1,10 @@
 package com.example.login.Entity;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,29 +15,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "products")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "orders")
 @Data
 @Builder
-public class Product {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Order {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String vendorName;
+
+    private String supplierName;
+
     private String productName;
 
-    private String category;
+    private Integer quantity;
 
-    private Integer stock;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
-    private Double price;
-
-    private String status;
-
-    private String imageUrl;
-    
-    private String supplierName; 
+    private LocalDate requestedDate;
 
 }

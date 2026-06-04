@@ -18,6 +18,7 @@ import com.example.login.DTO.VerifyOtpRequest;
 import com.example.login.Entity.Users;
 import com.example.login.Repository.UsersRepository;
 import com.example.login.Service.OtpService;
+import com.example.login.Service.UsersService;
 
 import jakarta.validation.Valid;
 
@@ -31,6 +32,9 @@ public class OTPController {
 	
 	@Autowired
 	private UsersRepository usersRepository;
+	
+	@Autowired
+    private UsersService userService;
 	
 	@PostMapping("/sendOTP")
 	public ResponseEntity<Map<String, String>> sendOtp(
@@ -74,9 +78,12 @@ public class OTPController {
 	                .status(HttpStatus.UNAUTHORIZED) // or 400 Bad Request
 	                .body(response);
 	    }
+	    
+	    String token = userService.login(request.getMobileNumber());
 
 	    // SUCCESS
 	    response.put("status", "VERIFIED");
+	    response.put("token", token);
 
 	    return ResponseEntity
 	            .status(HttpStatus.OK)

@@ -34,10 +34,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
     	
+    	if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+    	
     	String path = request.getRequestURI();
 
         // Skip public endpoints
-        if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/sendOTP") || path.startsWith("/verifyOTP") || path.startsWith("/product")) {
+        if (path.startsWith("/login") || path.startsWith("/register") || path.startsWith("/sendOTP") || path.startsWith("/verifyOTP")) {
             filterChain.doFilter(request, response);
             return;
         }

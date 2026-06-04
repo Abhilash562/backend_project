@@ -26,6 +26,7 @@ public class ProdutService {
                 .price(dto.getPrice())
                 .status(dto.getStatus())
                 .imageUrl(dto.getImageUrl())
+                .supplierName(dto.getSupplierName())
                 .build();
 
         Product savedProduct = repository.save(product);
@@ -69,6 +70,7 @@ public class ProdutService {
         product.setPrice(dto.getPrice());
         product.setStatus(dto.getStatus());
         product.setImageUrl(dto.getImageUrl());
+        product.setSupplierName(dto.getSupplierName());
 
         Product updated = repository.save(product);
 
@@ -97,6 +99,7 @@ public class ProdutService {
                 .price(product.getPrice())
                 .status(product.getStatus())
                 .imageUrl(product.getImageUrl())
+                .supplierName(product.getSupplierName())
                 .build();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.login.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -74,5 +76,31 @@ public class UsersController {
         response.setBusinessType(user.getBusinessType());
 
         return ResponseEntity.ok(new ApiResponse<>(true, "User details fetched successfully", response));
+    }
+    
+    @GetMapping("/suppliers")
+    public ResponseEntity<ApiResponse<List<Users>>> getAllSuppliers() {
+
+        List<Users> suppliers = userService.getAllSuppliers();
+
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "Suppliers fetched successfully",
+                        suppliers
+                ));
+    }
+
+    @GetMapping("/vendors")
+    public ResponseEntity<ApiResponse<List<Users>>> getAllVendors() {
+
+        List<Users> vendors = userService.getAllVendors();
+
+        return ResponseEntity.ok(
+                new ApiResponse<>(
+                        true,
+                        "Vendors fetched successfully",
+                        vendors
+                ));
     }
 }

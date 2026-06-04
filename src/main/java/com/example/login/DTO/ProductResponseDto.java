@@ -14,5 +14,6 @@ public class ProductResponseDto {
     private Double price;
     private String status;
     private String imageUrl;
+    private String supplierName;
 
 }

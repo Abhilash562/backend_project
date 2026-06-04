@@ -1,5 +1,6 @@
 package com.example.login.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.login.Config.JwtUtil;
 import com.example.login.DTO.RegisterRequest;
 import com.example.login.Entity.Users;
+import com.example.login.Entity.Users.Role;
 import com.example.login.Repository.UsersRepository;
 
 @Service
@@ -55,6 +57,14 @@ public class UsersService {
     public Users getUserByMobile(String mobileNumber) {
         return userRepository.findByMobileNumber(mobileNumber)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    public List<Users> getAllSuppliers() {
+        return userRepository.findByRole(Role.SUPPLIER);
+    }
+
+    public List<Users> getAllVendors() {
+        return userRepository.findByRole(Role.VENDOR);
     }
 
 }

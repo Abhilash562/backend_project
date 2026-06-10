@@ -25,4 +25,7 @@ public interface OrderRepository extends JpaRepository <Order, Long>{
 
     @Query("SELECT SUM(o.quantity) FROM Order o WHERE o.orderStatus = 'COMPLETED'")
     Long totalCompletedQuantity();
+
+
+	List<Order> findByVendorName(String vendorName);
 }
